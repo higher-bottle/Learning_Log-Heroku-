@@ -1,0 +1,49 @@
+{% extends 'learning_logs/base.html' %}
+
+
+
+{% block page_header %}
+<h1>Topics</h1>
+
+{#<style>#}
+{#/* unvisited link */#}
+{#a.one:link {#}
+{#  color: blue;#}
+{#}#}
+{##}
+{#/* visited link */#}
+{#a.one:visited {#}
+{#  color: blue;#}
+{#}#}
+{##}
+{#/* mouse over link */#}
+{#a.one:hover {#}
+{#  color: whitesmoke;#}
+{#}#}
+{##}
+{#/* selected link */#}
+{#a.one:active {#}
+{#  color: blue;#}
+{#}#}
+{#</style>#}
+
+{% endblock %}
+
+{% block content %}
+
+    <button class="btn btn-outline-primary">
+        <a class="one" href="{% url 'learning_logs:new_topic' %}" >Add a new topic</a>
+{#    <svg class="bi" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>#}
+    </button>
+
+    <ul>
+        {% for topic in topics %}
+            <li><h3><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a> </h3></li>
+        {% empty %}
+            <li><h3>No topic have been added yet.</h3></li>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}
